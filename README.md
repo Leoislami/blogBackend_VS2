@@ -44,14 +44,17 @@ GraphQL ist eine Abfragesprache und Laufzeitumgebung zur Anforderung von Daten �
 genau die Daten anzufordern, die sie benötigen, und reduziert somit Overfetching und Underfetching. Es gibt drei Hauptoperationen in GraphQL: Queries, Mutations und Subscriptions.
 
 Queries:
+
 Queries sind die grundlegenden Anfragen in GraphQL, mit denen Clients Daten von einem Server anfordern können. Sie ähneln den GET-Anfragen in REST-APIs.
 In einer GraphQL-Abfrage kann der Client die gewünschten Felder und deren Struktur genau angeben. Dadurch wird die Menge der übertragenen Daten reduziert und die Effizienz der Anwendung verbessert.
 
 Mutations:
+
 Mutations sind in GraphQL dafür zuständig, Daten zu ändern (erstellen, aktualisieren oder löschen). Sie ähneln den POST-, PUT- und DELETE-Anfragen in REST-APIs.
 Mutations sorgen dafür, dass die Änderungen am Server vorgenommen werden und eine Antwort an den Client zurückgegeben wird, die die aktualisierten Daten enthält.
 
 Subscriptions:
+
 Subscriptions ermöglichen Echtzeit-Updates in GraphQL. Sie ermöglichen es dem Client, auf bestimmte Ereignisse auf dem Server zu hören und Benachrichtigungen zu erhalten, wenn diese Ereignisse eintreten.
 Subscriptions basieren auf dem WebSocket-Protokoll und sind nützlich für Anwendungen, bei denen Daten in Echtzeit aktualisiert werden müssen, wie z. B. bei Chat-Anwendungen oder Benachrichtigungssystemen.
 
