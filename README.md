@@ -88,12 +88,13 @@ Durch Parallelisierung und Weitergabe von Ergebnissen ermöglicht GraphQL eine e
 GraphQL und REST sind zwei unterschiedliche Ansätze für API-Design. GraphQL ist eher fachlich getrieben, während REST technisch getrieben ist. Sie haben unterschiedliche Vorteile und Nachteile,
 die je nach Projektanforderungen eine Rolle spielen können.
 
-Vorteile von GraphQL:
+### Vorteile von GraphQL:
 -	Kein Overfetching oder Underfetching: Der Client erhält genau die gewünschten Daten.
 -	Typsicherheit: Das Schema ist in GraphQL integriert.
 -	Standardisierung: GraphQL arbeitet mit der Schema Definition Language.
 -	Einfachere Versionierung: Neue Felder können hinzugefügt werden, ohne bestehende Resolver zu beeinträchtigen.
-     Nachteile von GraphQL:
+
+### Nachteile von GraphQL:
 -	Kein Caching: Aufgrund des einzelnen Endpunkts kann kein Caching ausgeführt werden.
 -	Potenziell hoher Serveraufwand: Umfangreiche Selektionen können viele Resolver und Datenbankabfragen erfordern.
 
