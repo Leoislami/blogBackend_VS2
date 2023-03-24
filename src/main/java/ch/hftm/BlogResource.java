@@ -25,7 +25,7 @@ public class BlogResource {
 
     @Query("entries")
     @Description("get all blog entries")
-    public List<EntryOverviewDto> sayHello(@DefaultValue("1") Integer from, @DefaultValue("50") Integer to) {
+    public List<EntryOverviewDto> getEntries(@DefaultValue("1") Integer from, @DefaultValue("50") Integer to) {
         List<Entry> entryList = Entry.listAll();
 
         if (from != null && to != null) {
@@ -120,7 +120,7 @@ public class BlogResource {
                 originalEntry.title = input.title();
             }
         } else {
-            throw new GraphQLException("You are only allowed to replace your own posts!");
+            throw new GraphQLException("You are only allowed to replace  your own posts!");
         }
         return true;
     }
