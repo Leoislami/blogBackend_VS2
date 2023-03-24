@@ -24,6 +24,7 @@ benötigst, wende dich bitte an den Projektverantwortlichen oder erstelle ein Is
     <a href="#graphql">GraphQL</a>
     <ul>
         <li><a href="#was-ist-graphql">Was ist GraphQL</a></li>
+          <li><a href="#resolver">Resolver</a></li>
         <li><a href="#graphql-vs-rest">GraphQL vs REST</a></li>
       </ul>
     </li>
@@ -44,19 +45,42 @@ GraphQL ist eine Abfragesprache und Laufzeitumgebung zur Anforderung von Daten �
 genau die Daten anzufordern, die sie benötigen, und reduziert somit Overfetching und Underfetching. Es gibt drei Hauptoperationen in GraphQL: Queries, Mutations und Subscriptions.
 
 Queries:
+
 Queries sind die grundlegenden Anfragen in GraphQL, mit denen Clients Daten von einem Server anfordern können. Sie ähneln den GET-Anfragen in REST-APIs.
 In einer GraphQL-Abfrage kann der Client die gewünschten Felder und deren Struktur genau angeben. Dadurch wird die Menge der übertragenen Daten reduziert und die Effizienz der Anwendung verbessert.
 
 Mutations:
+
 Mutations sind in GraphQL dafür zuständig, Daten zu ändern (erstellen, aktualisieren oder löschen). Sie ähneln den POST-, PUT- und DELETE-Anfragen in REST-APIs.
 Mutations sorgen dafür, dass die Änderungen am Server vorgenommen werden und eine Antwort an den Client zurückgegeben wird, die die aktualisierten Daten enthält.
 
 Subscriptions:
+
 Subscriptions ermöglichen Echtzeit-Updates in GraphQL. Sie ermöglichen es dem Client, auf bestimmte Ereignisse auf dem Server zu hören und Benachrichtigungen zu erhalten, wenn diese Ereignisse eintreten.
 Subscriptions basieren auf dem WebSocket-Protokoll und sind nützlich für Anwendungen, bei denen Daten in Echtzeit aktualisiert werden müssen, wie z. B. bei Chat-Anwendungen oder Benachrichtigungssystemen.
 
 Zusammenfassend bieten GraphQL-Operationen (Queries, Mutations und Subscriptions) eine flexible und effiziente Möglichkeit, mit APIs zu interagieren und genau die Daten abzurufen oder zu ändern,
 die für eine bestimmte Anwendung erforderlich sind.
+
+## Resolver
+
+In GraphQL gibt es Resolver, die auf dem Server ausgeführt werden und für das Aggregieren von Daten zuständig sind.
+Bei eingehenden GraphQL-Anfragen, die Queries, Mutations oder Subscriptions enthalten,
+teilt sich der Server die Aufgaben in technische und fachliche Aspekte. Technische Aspekte umfassen das Parsen und Beantworten von Anfragen,
+wofür es vorgefertigte Module gibt, wie zum Beispiel GraphQL JS für JavaScript. Fachliche Aspekte betreffen die Resolver.
+Resolver sind Funktionen, die für jedes Feld einer Query ausgeführt werden. Sie sind dafür verantwortlich, die Daten für jedes Feld zu besorgen,
+beispielsweise aus einer Datenbank. Die Ergebnisse der Resolver werden an den technischen Layer des GraphQL-Servers zurückgegeben,
+der die Aggregation und Zusammenstellung der Ergebnisse übernimmt, bevor sie an den Client zurückgeschickt werden.
+
+Zwei Haupteffekte tragen zur Effizienz von GraphQL bei:
+
+1.	Parallelisierung: Resolver werden parallel ausgeführt, sofern sie keine Abhängigkeiten voneinander haben.
+      Dies beschleunigt den Prozess im Vergleich zu einer seriellen Ausführung.
+2.	Weitergabe von Ergebnissen: Um unnötige Datenbankabfragen zu vermeiden, wird das Ergebnis des übergeordneten Resolvers
+      an die untergeordneten Resolver weitergegeben. Diese können dann direkt auf die benötigten Informationen zugreifen und sie zurückgeben.
+
+
+Durch Parallelisierung und Weitergabe von Ergebnissen ermöglicht GraphQL eine effiziente Datenabfrage, bei der einzelne Felder aus einem Objekt gelesen werden können, ohne mehrere Datenbankzugriffe durchführen zu müssen.
 
 
 ## GraphQL vs REST
