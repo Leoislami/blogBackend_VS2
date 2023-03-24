@@ -1,7 +1,7 @@
 # Blog Backend - GraphQL
 <br />
 <div align="center">
-<img src="GraphQL_Logo.svg.png" alt="Logo" width="600" height="400">
+<img src="graphql.png" alt="Logo" width="600" height="400">
 </div>
 
 
