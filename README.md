@@ -24,6 +24,7 @@ benötigst, wende dich bitte an den Projektverantwortlichen oder erstelle ein Is
     <a href="#graphql">GraphQL</a>
     <ul>
         <li><a href="#was-ist-graphql">Was ist GraphQL</a></li>
+          <li><a href="#resolver">Resolver</a></li>
         <li><a href="#graphql-vs-rest">GraphQL vs REST</a></li>
       </ul>
     </li>
@@ -60,6 +61,26 @@ Subscriptions basieren auf dem WebSocket-Protokoll und sind nützlich für Anwen
 
 Zusammenfassend bieten GraphQL-Operationen (Queries, Mutations und Subscriptions) eine flexible und effiziente Möglichkeit, mit APIs zu interagieren und genau die Daten abzurufen oder zu ändern,
 die für eine bestimmte Anwendung erforderlich sind.
+
+## Resolver
+
+In GraphQL gibt es Resolver, die auf dem Server ausgeführt werden und für das Aggregieren von Daten zuständig sind.
+Bei eingehenden GraphQL-Anfragen, die Queries, Mutations oder Subscriptions enthalten,
+teilt sich der Server die Aufgaben in technische und fachliche Aspekte. Technische Aspekte umfassen das Parsen und Beantworten von Anfragen,
+wofür es vorgefertigte Module gibt, wie zum Beispiel GraphQL JS für JavaScript. Fachliche Aspekte betreffen die Resolver.
+Resolver sind Funktionen, die für jedes Feld einer Query ausgeführt werden. Sie sind dafür verantwortlich, die Daten für jedes Feld zu besorgen,
+beispielsweise aus einer Datenbank. Die Ergebnisse der Resolver werden an den technischen Layer des GraphQL-Servers zurückgegeben,
+der die Aggregation und Zusammenstellung der Ergebnisse übernimmt, bevor sie an den Client zurückgeschickt werden.
+
+Zwei Haupteffekte tragen zur Effizienz von GraphQL bei:
+
+1.	Parallelisierung: Resolver werden parallel ausgeführt, sofern sie keine Abhängigkeiten voneinander haben.
+      Dies beschleunigt den Prozess im Vergleich zu einer seriellen Ausführung.
+2.	Weitergabe von Ergebnissen: Um unnötige Datenbankabfragen zu vermeiden, wird das Ergebnis des übergeordneten Resolvers
+      an die untergeordneten Resolver weitergegeben. Diese können dann direkt auf die benötigten Informationen zugreifen und sie zurückgeben.
+
+
+Durch Parallelisierung und Weitergabe von Ergebnissen ermöglicht GraphQL eine effiziente Datenabfrage, bei der einzelne Felder aus einem Objekt gelesen werden können, ohne mehrere Datenbankzugriffe durchführen zu müssen.
 
 
 ## GraphQL vs REST
